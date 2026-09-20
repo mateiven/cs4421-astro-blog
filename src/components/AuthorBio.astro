@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'authors'>['data'];
+
+const { name, bio, avatar, socialLinks } = Astro.props;
+---
+
+<section class="author-bio" aria-labelledby="author-heading">
+	<Image class="avatar" src={avatar} alt={`Portrait of ${name}`} width={96} height={96} />
+	<div class="author-details">
+		<p class="eyebrow">About the author</p>
+		<h2 id="author-heading">{name}</h2>
+		<p>{bio}</p>
+		<nav aria-label={`${name}'s social links`}>
+			<ul>
+				{socialLinks.map(({ label, url }) => (
+					<li><a href={url} rel="me">{label}</a></li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</section>
+
+<style>
+	.author-bio {
+		display: flex;
+		gap: 1.25rem;
+		align-items: flex-start;
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.avatar {
+		flex: 0 0 auto;
+		width: 96px;
+		height: 96px;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+	.author-details h2,
+	.author-details p {
+		margin: 0;
+	}
+	.eyebrow {
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+	.author-details h2 {
+		font-size: 1.5rem;
+	}
+	.author-details > p:not(.eyebrow) {
+		margin-top: 0.5rem;
+	}
+	.author-details ul {
+		display: flex;
+		gap: 1rem;
+		padding: 0;
+		margin: 0.75rem 0 0;
+		list-style: none;
+		font-size: 0.9rem;
+	}
+	@media (max-width: 520px) {
+		.author-bio {
+			flex-direction: column;
+		}
+	}
+</style>
