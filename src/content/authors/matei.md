@@ -1,7 +1,7 @@
 ---
 name: 'Matei'
-bio: 'A curious developer writing about software, systems, and the ideas that make technology useful.'
-avatar: '../../assets/blog-placeholder-about.jpg'
+bio: 'A curious developer writing about sports, music, technology and travel.'
+avatar: '../../assets/me.jpg'
 socialLinks:
   - label: 'GitHub'
     url: 'https://github.com/'

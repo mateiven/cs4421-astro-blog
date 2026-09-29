@@ -28,8 +28,11 @@ export default defineConfig({
 						style: 'normal',
 						display: 'swap',
 					},
+					
 				],
 			},
 		},
+		
 	],
+	
 });
